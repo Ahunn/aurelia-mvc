@@ -6,32 +6,26 @@ Aurelia (http://aurelia.io/) is an amazing web framework. It's designed to work 
 Some example code was taken from: http://odetocode.com/blogs/scott/archive/2015/04/07/aurelia-hello-world-with-asp-net-5.aspx
 
 Getting started steps: 
-<ol>
-<li>
-Create a new, empty ASP.NET 5 web application with Visual Studio 2015
-</li>
-<li>
-Install JSPM
-</li>
-<li>
-Perform the following commands:
+1. Create a new, empty ASP.NET 5 web application with Visual Studio 2015
+
+2. Install JSPM
+
+3. Perform the following commands:
 jspm install aurelia-framework
 During the first installation, JSPM will do some configuration settings. Most of the settings can be default, but set the base folder to: "./wwwroot".
 jspm install aurelia-bootstrapper
-</li>
-<li>
-Now, in the project root (not the wwwroot folder), create a folder called Views. Within that folder, you can create any subfolder for any section of your app you'd like. For example, "Home".
-</li>
-<li>
-Within the Home folder, create an Index.cshtml file. Within that file, add the following: 
 
+4. Now, in the project root (not the wwwroot folder), create a folder called Views. Within that folder, you can create any subfolder for any section of your app you'd like. For example, "Home".
+
+5. Within the Home folder, create an Index.cshtml file. Within that file, add the following: 
+```html
         <body aurelia-app="/AureliaConfigurations/home">
         </body>
+```
 
-What this does is tell Aurelia to bootstrap the body of any later loaded templates (we'll get to that). It also gives a particular configuration, which is important to having multiple main sections.
-</li>
-<li>
-Within wwwroot create a folder called AureliaConfigurations and create a home.js file. Add the following:
+6. What this does is tell Aurelia to bootstrap the body of any later loaded templates (we'll get to that). It also gives a particular configuration, which is important to having multiple main sections.
+
+7. Within wwwroot create a folder called AureliaConfigurations and create a home.js file. Add the following:
 ```javascript
 
         import {LogManager} from 'aurelia-framework';
@@ -54,12 +48,10 @@ Within wwwroot create a folder called AureliaConfigurations and create a home.js
 ```
 
 By default, Aurelia looks for an app.js file in the same directory as the Index.html (or cshtml in our case), this overrides that behaivor. This is what allows us to have multiple subapps within our main application.
-</li>
-<li>
-Now within wwwroot create a folder called Views with the same subfolders as our other views folder. 
-</li>
-<li>
-Create 2 files in the home directory: app.js and app.html. Add the following code to each (from the Aurelia getting started docs).
+
+8. Now within wwwroot create a folder called Views with the same subfolders as our other views folder. 
+
+9. Create 2 files in the home directory: app.js and app.html. Add the following code to each (from the Aurelia getting started docs).
 
 app.html
 ```html
@@ -97,9 +89,8 @@ app.js
 ```
 
 You'll also need the html/js pairs found in the example app home directory (child-router, nav-bar, users, welcome)
-</li>
-<li>
-In the Project/Views folder create a folder called Shared. Add a _Layout.cshtml file with the following:
+
+10. In the Project/Views folder create a folder called Shared. Add a _Layout.cshtml file with the following:
 
 ```html
 
@@ -135,11 +126,8 @@ Outside of that folder create a _ViewStart.cshtml file that just applies our lay
         }
 
 ```
-</li>
-<li>
-Now create a controllers folder in the project root and create a HomeController that just returns the default view.
-</li>
-</ol>
+
+11. Now create a controllers folder in the project root and create a HomeController that just returns the default view.
 
 That should be it! If all has gone according to plan, your /home should bring up the a navigation page that you can switch between a couple of example pages. So that's it. MVC handles routing to our Aurelia application, which handles routing from there. This allows you to break your website into main sections governed by MVC and let Aurelia handle routing within.
 
