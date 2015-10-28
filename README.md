@@ -25,34 +25,31 @@ Now, in the project root (not the wwwroot folder), create a folder called Views.
 <li>
 Within the Home folder, create an Index.cshtml file. Within that file, add the following: 
 
-```html
+        <body aurelia-app="/AureliaConfigurations/home">
+        </body>
 
-    <body aurelia-app="/AureliaConfigurations/home">
-    </body>
-    
-```
 What this does is tell Aurelia to bootstrap the body of any later loaded templates (we'll get to that). It also gives a particular configuration, which is important to having multiple main sections.
 </li>
 <li>
 Within wwwroot create a folder called AureliaConfigurations and create a home.js file. Add the following:
 ```javascript
 
-import {LogManager} from 'aurelia-framework';
-import {ConsoleAppender} from 'aurelia-logging-console';
-
-LogManager.addAppender(new ConsoleAppender());
-LogManager.setLevel(LogManager.logLevel.debug);
-
-export function configure(aurelia) {
-    aurelia.use
-      .defaultBindingLanguage()
-      .defaultResources()
-      .history()
-      .router()
-      .eventAggregator();
-
-    aurelia.start().then(a => a.setRoot('/views/home/app', document.body));
-}
+        import {LogManager} from 'aurelia-framework';
+        import {ConsoleAppender} from 'aurelia-logging-console';
+        
+        LogManager.addAppender(new ConsoleAppender());
+        LogManager.setLevel(LogManager.logLevel.debug);
+        
+        export function configure(aurelia) {
+            aurelia.use
+              .defaultBindingLanguage()
+              .defaultResources()
+              .history()
+              .router()
+              .eventAggregator();
+        
+            aurelia.start().then(a => a.setRoot('/views/home/app', document.body));
+        }
 
 ```
 
@@ -67,16 +64,16 @@ Create 2 files in the home directory: app.js and app.html. Add the following cod
 app.html
 ```html
 
-<template>
-    <require from="./nav-bar.html"></require>
-    <link rel="stylesheet" type="text/css" href="jspm_packages/github/twbs/bootstrap@3.3.5/css/bootstrap.css" />
-
-  <nav-bar router.bind="router"></nav-bar>
-
-  <div class="page-host">
-    <router-view></router-view>
-  </div>
-</template>
+        <template>
+            <require from="./nav-bar.html"></require>
+            <link rel="stylesheet" type="text/css" href="jspm_packages/github/twbs/bootstrap@3.3.5/css/bootstrap.css" />
+        
+          <nav-bar router.bind="router"></nav-bar>
+        
+          <div class="page-host">
+            <router-view></router-view>
+          </div>
+        </template>
 
 
 ```
@@ -84,18 +81,18 @@ app.html
 app.js
 ```javascript
 
-export class App {
-  configureRouter(config, router) {
-    config.title = 'Aurelia';
-    config.map([
-      { route: ['', 'welcome'], name: 'welcome',      moduleId: './welcome',      nav: true, title: 'Welcome' },
-      { route: 'users',         name: 'users',        moduleId: './users',        nav: true, title: 'Github Users' },
-      { route: 'child-router',  name: 'child-router', moduleId: './child-router', nav: true, title: 'Child Router' }
-    ]);
-
-    this.router = router;
-  }
-}
+        export class App {
+          configureRouter(config, router) {
+            config.title = 'Aurelia';
+            config.map([
+              { route: ['', 'welcome'], name: 'welcome',      moduleId: './welcome',      nav: true, title: 'Welcome' },
+              { route: 'users',         name: 'users',        moduleId: './users',        nav: true, title: 'Github Users' },
+              { route: 'child-router',  name: 'child-router', moduleId: './child-router', nav: true, title: 'Child Router' }
+            ]);
+        
+            this.router = router;
+          }
+        }
 
 ```
 
@@ -106,24 +103,24 @@ In the Project/Views folder create a folder called Shared. Add a _Layout.cshtml 
 
 ```html
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <script src="~/jspm_packages/system.js"></script>
-    <script src="~/config.js"></script>
-    <script>
-        System.import("aurelia-bootstrapper");
-    </script>
-</head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
-</html>
+        <!DOCTYPE html>
+        
+        <html>
+        <head>
+            <meta name="viewport" content="width=device-width" />
+            <title>@ViewBag.Title</title>
+            <script src="~/jspm_packages/system.js"></script>
+            <script src="~/config.js"></script>
+            <script>
+                System.import("aurelia-bootstrapper");
+            </script>
+        </head>
+        <body>
+            <div>
+                @RenderBody()
+            </div>
+        </body>
+        </html>
 
 ```
 
@@ -132,10 +129,10 @@ That brings in the needed javascript libraries.
 Outside of that folder create a _ViewStart.cshtml file that just applies our layout
 
 ```html
-
-@{
-    Layout = "_Layout";
-}
+        
+        @{
+            Layout = "_Layout";
+        }
 
 ```
 </li>
