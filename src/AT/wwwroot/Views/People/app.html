@@ -1,0 +1,13 @@
+﻿<template>
+    <section>
+        <h2>${heading}</h2>
+        <div class="row au-stagger">
+            <div class="col-sm-6 col-md-3 card-container au-animate" repeat.for="person of people">
+                <label>Age: ${person.Age}</label>
+                <br/>
+                <label>Name: ${person.Name}</label>
+                <p></p>
+            </div>
+        </div>
+    </section>
+</template>
